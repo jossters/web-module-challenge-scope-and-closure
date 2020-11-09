@@ -28,11 +28,17 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+
+   The 'let count = 0' counter1  is blocked scoped and counter2 is global scope.
+
   2. Which of the two uses a closure? How can you tell?
   
+   The count1 is using the {} syntax on the let variable.
+
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+
+     counter1 is reusable code and counter2 would be prefered  when you want your variable to be reused.
 */
 
 // counter1 code
@@ -61,11 +67,12 @@ Use the inning function below to do the following:
   For example: invoking inning() should return a numerical score value of 0, 1, or 2
 */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+     
+     return Math.floor(Math.random()*Math.floor(2));
+     
 }
+
 
 /* Task 3: finalScore()
 Use the finalScore function below to do the following:
@@ -80,20 +87,29 @@ For example: invoking finalScore(inning, 9) might return this object:
 }
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(scoreCb){
+  
+  return{
+    Home: scoreCb(),
+    Away: scoreCb(),
+  }
 
-  /*Code Here*/
 
 }
-
+console.log(finalScore(inning))
 /* Task 4: 
 // create a function called getInningScore 
 // the function should take the inning function as an argument 
 // it should return an object with with a score for home and a score for away that that populates from invoking the inning callback. */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(scoreCb) {
+  return{
+    Home: scoreCb(),
+    Away: scoreCb(),
+  }
 }
+console.log(finalScore(inning))
+
 /* Task 5: scoreboard()
 Use the scoreboard function below to do the following:
   1. Receive a callback function, that you create, called `getInningScore`
